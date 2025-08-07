@@ -1,4 +1,5 @@
 import { Metadata } from "next"
+import { Provider } from "@/components/ui/provider"
 
 export const metadata: Metadata = {
   title: 'Home - Aula next Js do zero',
@@ -19,10 +20,10 @@ export const metadata: Metadata = {
 }
 
 
-export default function Home() {
+export default function Home({Component, pageProps}) {
   return (
-    <div>
-      <h1>Pagina Home</h1>
-    </div>
+   <Provider>
+    <Component {...pageProps}/>
+   </Provider>
   )
 }

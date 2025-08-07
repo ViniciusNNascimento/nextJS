@@ -1,5 +1,6 @@
+import Link from "next/link"
 
-interface PostProps {
+export interface PostProps {
     id: number,
     title: string,
     body: string,
@@ -23,19 +24,19 @@ export default async function Posts() {
         console.log(data)
     }
 
-    async function handleSearchusers(FormData: FormData) {
+    async function handleSearchusers(formData: FormData) {
         'use server'
-        const userId = FormData.get('userId')
+        const userId = formData.get('userId')
 
         const response = await fetch(`http://dummyjson.com/posts/user/${userId}`)
-         const data: ResponseProps = await response.json()
+        const data: ResponseProps = await response.json()
 
         console.log(data)
     }
 
     return (
         <div className="mx-2">
-            <h1 className="flex text-center justify-center text-5xl py-4">
+            <h1 className="">
                 Pagina Posts
             </h1>
             <button onClick={handleFetchPosts}>
@@ -66,7 +67,11 @@ export default async function Posts() {
                     <div key={post.id} className="bg-gray-300 rounded-2xl p-2">
                         <h2 className="font-bold">{post.title}</h2>
                         <p>{post.body}</p>
-
+                        <Link 
+                        className="font-bold text-blue-500 hover:text-blue-400 "
+                        href={`/posts/${post.id}`}>
+                            Ver detalhes
+                        </Link>
                     </div>
                 ))}
             </div>

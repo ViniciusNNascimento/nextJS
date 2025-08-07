@@ -2,6 +2,7 @@ import "./globals.css";
 import { Header } from '../components/header'
 import { Metadata } from "next";
 
+
 export const metadata: Metadata = {
   title: 'Aula nextJS',
   description: 'aprimorando nextJS!',
@@ -27,12 +28,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`antialiased`}
-      >
+      <body>
         <Header />
         {children}
-
       </body>
     </html>
   );
