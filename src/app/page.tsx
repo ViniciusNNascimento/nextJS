@@ -10,9 +10,7 @@ import {
 } from '@chakra-ui/react'
 
 import { AccordionPage } from "../components/accordion"
-import { ActionBarPage } from "@/components/action-bar"
 import { BadgePage } from "@/components/badge"
-import { CardPage } from "@/components/card"
 import { ButtonPage } from "@/components/button"
 
 export const metadata: Metadata = {
@@ -45,12 +43,12 @@ export default function Home() {
       <Box alignItems={"center"} justifyItems={"center"}>
         <AccordionPage />
       </Box>
-      <ActionBarPage />
       <Box padding={''} alignItems='center' justifyItems={"center"}>
         <BadgePage />
       </Box>
 
-      <CardPage />
+
+      
 
 
 

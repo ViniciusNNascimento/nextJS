@@ -2,7 +2,7 @@ import { PostProps } from "../../page"
 
 export async function PostInfo({ id }: { id: string }) {
 
-    await new Promise(resolve => setTimeout(resolve, 4000))
+    // await new Promise(resolve => setTimeout(resolve, 4000))
 
     const response = await fetch(`http://dummyjson.com/posts/${id}`)
     const data: PostProps = await response.json()

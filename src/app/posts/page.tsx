@@ -19,9 +19,6 @@ export default async function Posts() {
         'use server'
         const response = await fetch('http://dummyjson.com/posts')
         const data: ResponseProps = await response.json()
-
-
-        console.log(data)
     }
 
     async function handleSearchusers(formData: FormData) {
@@ -31,7 +28,6 @@ export default async function Posts() {
         const response = await fetch(`http://dummyjson.com/posts/user/${userId}`)
         const data: ResponseProps = await response.json()
 
-        console.log(data)
     }
 
     return (
@@ -67,9 +63,9 @@ export default async function Posts() {
                     <div key={post.id} className="bg-gray-300 rounded-2xl p-2">
                         <h2 className="font-bold">{post.title}</h2>
                         <p>{post.body}</p>
-                        <Link 
-                        className="font-bold text-blue-500 hover:text-blue-400 "
-                        href={`/posts/${post.id}`}>
+                        <Link
+                            className="font-bold text-blue-500 hover:text-blue-400 "
+                            href={`/posts/${post.id}`}>
                             Ver detalhes
                         </Link>
                     </div>
