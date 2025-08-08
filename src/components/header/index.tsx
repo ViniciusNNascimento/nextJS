@@ -1,29 +1,93 @@
-import Link from "next/link"
+"use client";
+
+import NextLink from "next/link";
+import {
+    Box,
+    Container,
+    Flex,
+    HStack,
+    Link as ChakraLink,
+    IconButton,
+    Button,
+} from "@chakra-ui/react";
+import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 
 export function Header() {
-    return (
-        <header className="flex px-2 py-4 bg-zinc-900 text-white">
-            <div className="flex items-center justify-between w-full mx-auto max-w-7xl">
-                <Link
-                    className="bg-gray-200 p-2 rounded hover:text-blue-500 text-black hover:bg-gray-900 transition duration-200"
-                    href='/'>
-                    NextJS
-                </Link>
-                <nav>
-                    <ul className="flex gap-4 border border-gray-300 bg-gray-200 p-2 rounded text-black">
-                        <Link className="hover:text-blue-500 transform hover:underline underline-offset-1" href='/' >
-                            Home
-                        </Link>
-                        <Link className="hover:text-blue-500 transform hover:underline underline-offset-1" href='/posts'>
-                            Post
-                        </Link>
-                        <Link className="hover:text-blue-500 transform hover:underline underline-offset-1" href='/dashboard'>
-                            Dashboard
-                        </Link>
 
-                    </ul>
-                </nav>
-            </div>
-        </header>
-    )
+
+    return (
+        <Box as="header" bg="gray.900" color="white" px={2} py={4}>
+            <Container maxW="7xl">
+                <Flex align="center" justify="space-between">
+                    <ChakraLink
+                        as={NextLink}
+                        href="/"
+                        bg="gray.200"
+                        color="black"
+                        px={4}
+                        py={2}
+                        rounded="md"
+                        _hover={{ color: "blue.500", bg: "gray.900" }}
+                        transition="all 200ms"
+                    >
+                        NextJS
+                    </ChakraLink>
+
+                    <HStack
+                        as="nav"
+
+                        border="1px"
+                        borderColor="gray.300"
+                        bg="gray.200"
+                        color="black"
+                        px={2}
+                        py={2}
+                        rounded="md"
+                    >
+                        <ChakraLink
+                            as={NextLink}
+                            href="/"
+                            color={"black"}
+                            _hover={{ color: "blue.500", textDecoration: "underline" }}
+                        >
+                            Home
+                        </ChakraLink>
+                        <ChakraLink
+                            as={NextLink}
+                            href="/posts"
+                            color={"black"}
+                            _hover={{ color: "blue.500", textDecoration: "underline" }}
+                        >
+                            Post
+                        </ChakraLink>
+                        <ChakraLink
+                            as={NextLink}
+                            href="/dashboard"
+                            color="black"
+                            _hover={{ color: "blue.500", textDecoration: "underline" }}
+                        >
+                            Dashboard
+                        </ChakraLink>
+
+
+
+
+                    </HStack>
+                    <ChakraLink
+                        as={NextLink}
+                        href="/sign-up"
+                        bg="gray.200"
+                        color="black"
+                        px={4}
+                        py={2}
+                        rounded="md"
+                        _hover={{ color: "blue.500", bg: "gray.900" }}
+                        transition="all 200ms"
+                    >
+                        Cadastre-se
+                    </ChakraLink>
+                </Flex>
+            </Container>
+        </Box>
+    );
 }

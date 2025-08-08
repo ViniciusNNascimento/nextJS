@@ -1,7 +1,7 @@
 import "./globals.css";
-import { Header } from '../components/header'
 import { Metadata } from "next";
-
+import { Provider } from "@/components/ui/provider"
+import { Header } from "@/components/header";
 
 export const metadata: Metadata = {
   title: 'Aula nextJS',
@@ -21,16 +21,14 @@ export const metadata: Metadata = {
   }
 }
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children, }: Readonly<{ children: React.ReactNode; }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body>
-        <Header />
-        {children}
+        <Provider>
+          <Header />
+          {children}
+        </Provider>
       </body>
     </html>
   );

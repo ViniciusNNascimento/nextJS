@@ -1,19 +1,27 @@
 'use client'
 
 import { useState } from "react"
+import { Button } from "@chakra-ui/react"
 
-export function Button() {
+export function ButtonPage() {
     const [nome, setNome] = useState("vinicius programador")
 
     function handleChangeName() {
-        setNome('vinicius nicacio')
+        if (nome === "vinicius programador") {
+            
+            setNome('vinicius nicacio')
+        } else {
+            setNome('vinicius programador')
+        }
+        
+
     }
 
     return (
         <div>
-            <button onClick={handleChangeName}>Alterar nome</button>
+            <Button onClick={handleChangeName}>{nome}</Button>
             <br />
-            <h3>Nome: {nome}</h3>
+           
         </div>
     )
 }
