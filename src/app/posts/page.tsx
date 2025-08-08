@@ -1,4 +1,10 @@
-import Link from "next/link"
+import {
+    Link,
+    Box,
+    
+
+} from "@chakra-ui/react"
+
 
 export interface PostProps {
     id: number,
@@ -31,7 +37,12 @@ export default async function Posts() {
     }
 
     return (
-        <div className="mx-2">
+        <Box
+        bg="tomato"
+       
+        color='white'
+       
+    >
             <h1 className="">
                 Pagina Posts
             </h1>
@@ -58,19 +69,20 @@ export default async function Posts() {
 
             </form>
 
-            <div className="flex flex-col gap-4 ">
+            <Box mx='4' color={'black'} className="flex flex-col gap-4 ">
                 {data.posts.map((post) => (
-                    <div key={post.id} className="bg-gray-300 rounded-2xl p-2">
+                    <Box padding={'4'} key={post.id} className="bg-gray-300 rounded-2xl">
                         <h2 className="font-bold">{post.title}</h2>
                         <p>{post.body}</p>
                         <Link
-                            className="font-bold text-blue-500 hover:text-blue-400 "
+                            color={'blue.500'}
+                            _hover={{ color: "blue.400" }}
                             href={`/posts/${post.id}`}>
                             Ver detalhes
                         </Link>
-                    </div>
+                    </Box>
                 ))}
-            </div>
-        </div>
+            </Box>
+        </Box>
     )
 }
