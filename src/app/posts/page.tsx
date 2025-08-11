@@ -1,9 +1,12 @@
 import {
     Link,
     Box,
-    
+    Button,
+    Input,
+    Flex,
 
 } from "@chakra-ui/react"
+
 
 
 export interface PostProps {
@@ -18,7 +21,12 @@ interface ResponseProps {
 }
 
 export default async function Posts() {
-    const response = await fetch('http://dummyjson.com/posts')
+    const response = await fetch('http://dummyjson.com/posts', {
+        cache: 'force-cache',
+        next: {
+            revalidate: 60
+        }
+    })
     const data: ResponseProps = await response.json()
 
     async function handleFetchPosts() {
@@ -38,40 +46,44 @@ export default async function Posts() {
 
     return (
         <Box
-        bg="tomato"
-       
-        color='white'
-       
-    >
+            color='white'
+            mx='4'
+        >
             <h1 className="">
                 Pagina Posts
             </h1>
-            <button onClick={handleFetchPosts}>
+            <Button mb='2' onClick={handleFetchPosts}>
+                
                 Buscar posts
-            </button>
+            </Button>
 
             <form
                 className="gap-2 flex my-2"
                 action={handleSearchusers}
+
+
             >
-                <input
+                <Input
+                border={'gray.100'}
+                    mt=''
                     type="text"
                     placeholder="Id do usuario"
-                    className="border border-gray-400 p-2"
+                    className="border border-gray-400 p-"
                     name="userId"
+                    w='1/5'
 
                 />
-                <button
+                <Button
                     type="submit"
-                    className="bg-blue-500 text-white p-2">
+                >
                     buscar usuario
-                </button>
+                </Button>
 
             </form>
 
-            <Box mx='4' color={'black'} className="flex flex-col gap-4 ">
+            <Flex  my='4' gap='4' color={'black'} direction='column' >
                 {data.posts.map((post) => (
-                    <Box padding={'4'} key={post.id} className="bg-gray-300 rounded-2xl">
+                    <Box padding={'4'} key={post.id} bg='gray.300' rounded='2xl'>
                         <h2 className="font-bold">{post.title}</h2>
                         <p>{post.body}</p>
                         <Link
@@ -82,7 +94,7 @@ export default async function Posts() {
                         </Link>
                     </Box>
                 ))}
-            </Box>
+            </Flex>
         </Box>
     )
 }

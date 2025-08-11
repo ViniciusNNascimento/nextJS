@@ -1,15 +1,19 @@
 import { ActionBarPage } from "@/components/action-bar"
 import { CardPage } from "@/components/card"
-import { Box } from "@chakra-ui/react"
+import { Box, Flex } from "@chakra-ui/react"
 
 export default function dashboard() {
     return (
-        <div>
+        <Box>
+
+
             <h1>Pagina Dashboard</h1>
-            <Box justifyItems={'center'} >
-                <ActionBarPage />
-                <CardPage />
-            </Box>
-        </div>
+            <Flex direction='column'>
+                <Box justifyItems={'center'} gap='4' >
+                    <ActionBarPage />
+                    <CardPage />
+                </Box>
+            </Flex>
+        </Box>
     )
 }

@@ -2,11 +2,8 @@
 
 import { Metadata } from "next"
 import {
-  Button,
-  HStack,
   Box,
-  Heading,
-
+  Flex,
 } from '@chakra-ui/react'
 
 import { AccordionPage } from "../components/accordion"
@@ -32,28 +29,32 @@ export const metadata: Metadata = {
 }
 
 
+export const revalidate = 30
+
 export default function Home() {
+  const randomNumber = Math.random() * 10
+  
   return (
 
-    <div>
+
+
+    <Flex gap='4' direction='column' >
+      
       <h1>Pagina Home</h1>
-      <ButtonPage>
-        
-      </ButtonPage>
+      <h2>Numero gerado: {randomNumber}</h2>
+      <Box alignItems={"center"} justifyItems={"center"}>
+        <ButtonPage />
+      </Box>
+
       <Box alignItems={"center"} justifyItems={"center"}>
         <AccordionPage />
       </Box>
-      <Box padding={''} alignItems='center' justifyItems={"center"}>
+
+      <Box alignItems='center' justifyItems={"center"}>
         <BadgePage />
       </Box>
 
-
-      
-
-
-
-
-    </div>
+    </Flex>
 
   )
 }
